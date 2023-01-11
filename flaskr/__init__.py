@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 
+
 # application factory function
 def create_app(test_config=None):
     app=Flask(__name__, instance_relative_config=True)
@@ -25,10 +26,16 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)   
 
+   
+    # Register blueprints
+    from . import users, farms
+  
+    app.register_blueprint(users.user_route)
+    app.register_blueprint(farms.farms_route)
 
         
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    # @app.route('/hello')
+    # def hello():
+    #     return 'Hello, World!'
 
     return app
