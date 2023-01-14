@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask import redirect 
 
 
 # application factory function
@@ -28,14 +29,17 @@ def create_app(test_config=None):
 
    
     # Register blueprints
-    from . import users, farms
+    from . import users, farms, crops, farmdetails
   
     app.register_blueprint(users.user_route)
     app.register_blueprint(farms.farms_route)
+    app.register_blueprint(crops.crops_route)
+    app.register_blueprint(farmdetails.farmsdetails_route)
 
         
-    # @app.route('/hello')
-    # def hello():
-    #     return 'Hello, World!'
+    @app.route('/')
+    def home():
+        return redirect ("/login")
 
+   
     return app

@@ -70,3 +70,20 @@ def login():
         flash(error)
         
     return render_template("login.html")
+
+@user_route.route('/logout', methods = ["GET"])
+def logout():
+    if request.method =="GET":
+        session.clear()
+        return redirect('/login')
+    
+    
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if session.get("user_id") is None:
+            return redirect('/login')
+
+        return view(**kwargs)
+
+    return wrapped_view
