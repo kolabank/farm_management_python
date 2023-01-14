@@ -1,0 +1,49 @@
+{%extends "layout.html"%} {% block title %} Farms {% endblock %} {%block main%}
+
+
+<div class="container">
+    <form action="/crops" method="GET">
+        <button class="btn btn-warning position-absolute start-0">Crops Database</button>
+    </form>
+
+    <h2>Your farms</h2>
+
+
+    <div class="row gy-4">
+
+        {% for farm in farms %}
+
+        <div class="col-sm-4">
+
+            <div class="card" id="farmcard">
+                <h5 class="card-header">
+                    {{ farm['farmname'] }}
+                </h5>
+                <div class="card-body">
+                    <h5 class="card-title">Location: {{ farm['location'] }}
+                    </h5>
+                    <p class="card-text">
+                        {{ farm['description'] }}
+                    </p>
+                    <form action="/farmdetails" , method="GET">
+                        <button class="btn btn-primary">Farm Details</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <p></p>
+
+    <form action="/newfarm" method="get" class="addbutton">
+        <button class="btn btn-danger">Add a new farm</button>
+
+    </form>
+
+</div>
+
+{%endblock%}

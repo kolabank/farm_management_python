@@ -1,0 +1,21 @@
+{%extends "layout.html"%} {% block title %} Farm Details {% endblock %} {%block main%}
+
+<h2>Add Crop</h2>
+<span>
+    <form action="/addcrop" method = "POST">
+<select name="crop" id="crop">
+    <option value = "XX">Select Crop</option>
+    {%for crop in crops%}
+    <option value={{crop.cropname}}>{{crop.cropname}}  {{crop.cropbreed}}</option>
+    {%endfor%}
+</select> 
+
+<input type="date" name = "date_planted" placeholder="Planting date">
+<input type="date" name = "date_harvest" placeholder="Harvest date">
+<input type="number" name = "stands" placeholder="Stands">
+<input type="number" name = "area" placeholder="Area (m2)">
+
+
+<button class="btn btn-info">Add</button>
+</form>
+</span> {%endblock%}

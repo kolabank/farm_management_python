@@ -1,0 +1,31 @@
+{%extends "layout.html"%} {% block title %} Farms {% endblock %} {%block main%}
+
+<div class="container-sm">
+    <table class="table table-bordered class=table-light table-striped">
+        <thead>
+            <tr>
+                <th>Crop</th>
+                <th>Breed</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for crop in crops%}
+            <tr>
+                <td>{{crop.cropname}}</td>
+                <td>{{crop.cropbreed}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+
+    <form action="/newcrop" method="get">
+        <button>Add new crop</button>
+    </form>
+
+</div>
+
+
+
+{%endblock%}

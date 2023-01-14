@@ -1,0 +1,30 @@
+{%extends "layout.html"%} {% block title %} New Crop {% endblock %} {%block main%}
+<div class="container text-center">
+    <div class="row justify-content-center mt-5">
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-5">New Crop</h5>
+                    <form action="/newcrop" method="post">
+                        <div class="mb-3">
+                            <label for="cropname" class="form-label">Crop Name</label>
+                            <input type="text" class="form-control" id="cropname" name="cropname">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cropbreed" class="form-label">Breed</label>
+                            <input type="text" class="form-control" id="cropbreed" name="cropbreed">
+
+                            <div class="d-grid gap-2 mt-5">
+                                <button class="btn btn-primary">Add Crop</button>
+                            </div>
+                    </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {%endblock%}
