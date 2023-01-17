@@ -1,48 +1,44 @@
-{%extends "layout.html"%} {% block title %} Farms {% endblock %} {%block main%}
+{%extends "layout.html"%} {% block title %}
+<h2>Farms</h2>
+{% endblock %} {%block top%} Crops Database {% endblock %} {%block main%}
+
+<h2>Your farms</h2>
 
 
-<div class="container">
-    <form action="/crops" method="GET">
-        <button class="btn btn-warning position-absolute start-0">Crops Database</button>
-    </form>
+<div class="row gy-4">
 
-    <h2>Your farms</h2>
+    {% for farm in farms %}
 
+    <div class="col-sm-4">
 
-    <div class="row gy-4">
-
-        {% for farm in farms %}
-
-        <div class="col-sm-4">
-
-            <div class="card" id="farmcard">
-                <h5 class="card-header">
-                    {{ farm['farmname'] }}
+        <div class="card" id="farmcard" name="farmname">
+            <h5 class="card-header">
+                {{ farm['farmname'] }}
+            </h5>
+            <div class="card-body">
+                <h5 class="card-title">Location: {{ farm['location'] }}
                 </h5>
-                <div class="card-body">
-                    <h5 class="card-title">Location: {{ farm['location'] }}
-                    </h5>
-                    <p class="card-text">
-                        {{ farm['description'] }}
-                    </p>
-                    <form action="/farmdetails" , method="GET">
-                        <button class="btn btn-primary">Farm Details</button>
-                    </form>
-                </div>
+                <p class="card-text">
+                    {{ farm['description'] }}
+                </p>
+                <form action="/farmdetails/{{farm['id']}}" , method="GET">
+                    <button class="btn btn-primary">Farm Details</button>
+                </form>
             </div>
-
         </div>
-
-        {% endfor %}
 
     </div>
 
-    <p></p>
+    {% endfor %}
 
-    <form action="/newfarm" method="get" class="addbutton">
-        <button class="btn btn-danger">Add a new farm</button>
+</div>
 
-    </form>
+<p></p>
+
+<form action="/newfarm" method="get" class="addbutton">
+    <button class="btn btn-danger">Add a new farm</button>
+
+</form>
 
 </div>
 

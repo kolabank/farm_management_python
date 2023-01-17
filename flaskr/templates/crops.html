@@ -1,4 +1,5 @@
-{%extends "layout.html"%} {% block title %} Farms {% endblock %} {%block main%}
+{%extends "layout.html"%} {% block title %} Farms {% endblock %} {%block top%}
+<a href="farms">Back to Farms</a> {% endblock %} {%block main%}+
 
 <div class="container-sm">
     <table class="table table-bordered class=table-light table-striped">
@@ -21,7 +22,7 @@
 
 
     <form action="/newcrop" method="get">
-        <button>Add new crop</button>
+        <button class="btn btn-danger">Add Crop</button>
     </form>
 
 </div>

@@ -33,11 +33,14 @@ CREATE TABLE crops (
 
 CREATE TABLE plantdetails(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  farm_id INTEGER,
   crop TEXT,
   crop_id INTEGER,
+  breed TEXT,
   date_planted TEXT,
   date_harvest TEXT,
   stands INTEGER,
   area REAL,
   FOREIGN KEY (crop_id) REFERENCES crops(id)
+  FOREIGN KEY (farm_id) REFERENCES farms(id)
 )
